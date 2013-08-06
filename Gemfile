@@ -24,4 +24,10 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
   gem "guard-rspec"
+  gem "guard-zeus"
+  gem "growl"
+  gem "rb-inotify", require: false
+  gem "rb-fsevent", require: false
+  gem "rb-fchange", require: false
+  gem "database_cleaner"
 end

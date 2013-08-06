@@ -2,9 +2,12 @@ AppApp::Application.routes.draw do
   
   get '/auth/:provider/callback', to: 'sessions#create'
   
-  get "/step-1",   to: "people#edit",      as: :step_one
-  get "/step-2",   to: "submissions#edit", as: :step_two
-  get "/complete", to: "submission#show",  as: :complete
+  patch "/update",   to: "people#update",    as: :person
+  get   "/me",       to: "people#show",      as: :me
+  get   "/step-1",   to: "people#edit",      as: :step_one
+  get   "/step-2",   to: "submissions#edit", as: :step_two
+  get   "/complete", to: "submission#show",  as: :complete
+  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

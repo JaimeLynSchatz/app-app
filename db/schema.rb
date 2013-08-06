@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130806012643) do
+ActiveRecord::Schema.define(version: 20130806031157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 20130806012643) do
     t.string   "uid"
     t.string   "avatar_url"
     t.string   "phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "people", ["uid"], name: "index_people_on_uid", using: :btree
+
+  create_table "submissions", force: true do |t|
+    t.string   "status"
+    t.integer  "person_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

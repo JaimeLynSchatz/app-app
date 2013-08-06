@@ -12,8 +12,7 @@ An *application* application for Ada candidates.
 - phone          : string
   
 ###Submission
-- video  : string
-- responses : Gist (has_many)
+- assignments : Gist (has_many)
 - status : string
 - person_id : integer (belongs_to)
 - Validates n gist associations

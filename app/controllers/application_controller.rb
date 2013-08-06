@@ -7,4 +7,10 @@ class ApplicationController < ActionController::Base
     @current_user ||= Person.find_by(uid: session[:uid])
   end
   helper_method :current_user
+  
+  def auth_user
+    if current_user.blank?
+      redirect_to "/auth/github"
+    end
+  end
 end

@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20130806031157) do
   create_table "people", force: true do |t|
     t.string   "name"
     t.string   "email"
-    t.string   "twitter_handle"
+    t.string   "nickname"
     t.string   "uid"
     t.string   "avatar_url"
     t.string   "phone"

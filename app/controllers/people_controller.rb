@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-  
+  before_filter :auth_user
   def show
     
   end

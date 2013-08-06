@@ -10,7 +10,7 @@ describe Person do
       expect(person.name).to eq "John Q Public"
     end
     it "assigns a handle" do
-      expect(person.twitter_handle).to eq "johnqpublic"
+      expect(person.nickname).to eq "johnqpublic"
     end
     it "assigns an avatar" do
       expect(person.avatar_url).to eq "http://si0.twimg.com/sticky/default_profile_images/default_profile_2_normal.png"
@@ -34,7 +34,7 @@ describe Person do
     it "doesn't change info on find" do
       person
       found_person = Person.find_or_create_by_auth_hash(twitter_hash.merge({info: {nickname: "bookis"}}))
-      expect(found_person.twitter_handle).to eq "johnqpublic"
+      expect(found_person.nickname).to eq "johnqpublic"
     end
   end
 end

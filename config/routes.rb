@@ -1,6 +1,8 @@
 AppApp::Application.routes.draw do
+  root 'people#show'
   
   get '/auth/:provider/callback', to: 'sessions#create'
+  get '/sign-out',                to: "sessions#destroy"
   
   patch "/update",   to: "people#update",    as: :person
   get   "/me",       to: "people#show",      as: :me

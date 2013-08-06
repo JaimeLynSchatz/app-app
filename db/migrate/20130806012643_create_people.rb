@@ -3,7 +3,7 @@ class CreatePeople < ActiveRecord::Migration
     create_table :people do |t|
       t.string :name
       t.string :email
-      t.string :twitter_handle, :uid
+      t.string :nickname, :uid
       t.string :avatar_url
       t.string :phone
 

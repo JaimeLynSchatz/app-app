@@ -5,9 +5,10 @@ class Person < ActiveRecord::Base
 
   def self.find_or_create_by_auth_hash(auth_hash)
     Person.find_or_create_by(uid: auth_hash[:uid]) do |person|
-      person.name           = auth_hash[:info][:name]
-      person.twitter_handle = auth_hash[:info][:nickname]
-      person.avatar_url     = auth_hash[:extra][:raw_info][:profile_image_url]
+      person.name       = auth_hash[:info][:name]
+      person.nickname   = auth_hash[:info][:nickname]
+      person.email      = auth_hash[:info][:email]
+      person.avatar_url = auth_hash[:info][:image]
     end
   end
 

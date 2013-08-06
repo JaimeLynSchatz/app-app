@@ -14,7 +14,7 @@ describe SessionsController do
     
     it "redirects to the users current step" do
       create
-      response.should redirect_to step_one_path
+      response.should redirect_to profile_path
     end
   end
 end

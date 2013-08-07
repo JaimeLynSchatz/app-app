@@ -5,15 +5,26 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+  <div class='container'>
+    <div class="header">
+      <ul class="nav nav-pills pull-right">
+        <li class=""><a href="#">Home</a></li>
+        <% if current_user %>
+          <li><%= link_to "Profile", profile_path %></li>
+          <li><%= link_to "Sign Out", sign_out_path %></li>
+        <% else %>
+          <li><%= link_to "Sign In with Github", "/auth/github" %></li>
+        <% end %>
+      </ul>
+      <h3 class="text-muted">ADA Application</h3>
+    </div>
+    
+    <%= yield %>
+  </div>
 
-<%= yield %>
-<% if current_user %>
-  <%= link_to "Sign Out", sign_out_path %>
-<% else %>
-  <%= link_to "Sign In with Github", "/auth/github" %>
-<% end %>
 
 </body>
 </html>

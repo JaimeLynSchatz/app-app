@@ -3,7 +3,11 @@ class SessionsController < ApplicationController
   def create
     person = Person.find_or_create_by_auth_hash(auth_hash)
     session[:uid] = person.uid
-    redirect_to profile_path
+    if person.email.blank?
+      redirect_to profile_path
+    else
+      redirect_to me_path
+    end
   end
   
   def destroy

@@ -1,6 +1,7 @@
-<%= image_tag current_user.avatar_url %>
-<%= current_user.name %>
-
-<%= current_user.inspect %>
-
-<%= link_to "Submission", submission_path %>
+<div class='row'>
+  <div class='col-lg-1'><%= image_tag current_user.avatar_url %></div>
+  <div class='col-lg-11'>
+    <h3><%= current_user.name %> <small>(<%= current_user.nickname %>)</small></h3>
+    <%= link_to "Submission", submission_path %>
+  </div>
+</div>

@@ -7,7 +7,7 @@ An *application* application for Ada candidates.
 ### Person
 - Full Name : string
 - Email : string
-- Twitter Handle : string
+- Nickname (handle) : string
 - avatar         : string
 - phone          : string
   
@@ -28,7 +28,7 @@ An *application* application for Ada candidates.
 
 3 step sign-up process.
 
-1. Auth Twitter
+1. Auth Github
 2. Give name & email (create person record)
 3. Complete Resume & Video (create submission)
 

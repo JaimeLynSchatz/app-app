@@ -11,6 +11,10 @@ gem 'turbolinks' # Read more: https://github.com/rails/turbolinks
 gem "omniauth-github"
 gem "bcrypt-ruby"
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

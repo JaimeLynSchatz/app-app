@@ -1,12 +1,18 @@
 class SessionsController < ApplicationController
   
+  def new
+    @person = Person.new
+  end
+  
   def create
-    person = Person.find_or_create_by_auth_hash(auth_hash)
-    session[:uid] = person.uid
-    if person.email.blank?
-      redirect_to profile_path
+    @person = Person.find_by_email(params[:email])
+    if @person && @person.unlocked? && @person.authenticate(params[:password])
+      session[:uid]   = @person.id
+      flash[:success] = "Successfully Signed In"
+      redirect_to submission_path
     else
-      redirect_to me_path
+      flash.now[:notice] = "Email address and password do not match"
+      render :new
     end
   end
   
@@ -15,11 +21,6 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
   
-  protected
-
-  def auth_hash
-    request.env['omniauth.auth']
-  end
 end
 
 

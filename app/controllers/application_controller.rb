@@ -4,13 +4,20 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   def current_user
-    @current_user ||= Person.find_by(uid: session[:uid])
+    @current_user ||= Person.find(session[:uid])
+  rescue ActiveRecord::RecordNotFound
+    nil
   end
   helper_method :current_user
   
+  def submission
+    @submission = current_user.submission || current_user.create_submission if current_user
+  end
+  helper_method :submission
+  
   def auth_user
     if current_user.blank?
-      redirect_to "/auth/github"
+      redirect_to "/sign-in"
     end
   end
 end

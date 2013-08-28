@@ -9,6 +9,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks' # Read more: https://github.com/rails/turbolinks
 gem "omniauth-github"
+gem "bcrypt-ruby"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

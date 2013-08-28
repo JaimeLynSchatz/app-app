@@ -1,0 +1,7 @@
+#sponsorship_explaination {
+  display: none;
+}
+
+#submission_existing_financial_sponsorship:checked ~ #sponsorship_explaination {
+  display: block;
+}

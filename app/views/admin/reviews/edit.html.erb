@@ -1,0 +1,65 @@
+<div class='row'>
+  <div class='col-lg-6'>
+    <dl class='dl-horizontal'>
+      <dt>Applicant</dt>
+      <dd><strong><%= @review.person.name %></strong></dd>
+      <dt>Resume</dt>
+      <dd><%= link_to @review.submission.resume_url, @review.submission.resume_url, target: :blank %>&zwnj;</dd>
+
+      <dt>Video</dt>
+      <dd><%= link_to @review.submission.video_interview_url, @review.submission.video_interview_url, target: :blank %>&zwnj;</dd>
+
+      <dt>Website</dt>
+      <dd><%= link_to @review.submission.website_url, @review.submission.website_url, target: :blank %>&zwnj;</dd>
+      
+      <dt>Linkin</dt>
+      <dd><%= link_to @review.submission.linkdin_url, @review.submission.linkdin_url, target: :blank %>&zwnj;</dd>
+      
+      <dt>Twitter</dt>
+      <dd><%= link_to "@#{@review.submission.twitter_handle}", "http://twitter.com/#{@review.submission.twitter_handle}", target: :blank %>&zwnj;</dd>
+
+      <dt>WA State Resident</dt>
+      <dd class='text-success'><%= raw "&#10004;" if @submission.wa_resident %>&zwnj;</dd>
+
+      <dt>WA State Student</dt>
+      <dd class='text-success'><%= raw "&#10004;" if @submission.wa_student %>&zwnj;</dd>
+    </dl>
+    
+    <% if @submission.existing_financial_sponsorship %>
+      <legend>Existing Financial Sponsorship</legend>
+      <p><%= @submission.sponsorship_explaination %></p>
+    <% end %>
+  </div>
+  
+  <div class='col-lg-6'>
+    
+    <%= render "/shared/error_messages", object: @review %>
+    <p>
+      Please review ALL of the existing resources provided by the applicant.
+    </p>
+    <%= form_for @review, url: admin_update_review_path do |f| -%>
+
+      <div class="form-group">
+        <%= f.label :score %>
+        <%= f.number_field :score, class: "form-control" %>
+        <p class="help-block">Rate the applicant on a scale of 1-5. One being not recommended, five being highly recommended</p>
+      </div>
+
+
+      <div class="form-group">
+        <%= f.label :feedback %>
+        <%= f.text_area :feedback, class: "form-control", rows: 6 %>
+        <p class="help-block">Provide a statement of why you chose the rating. Min 200 chars.</p>
+      </div>
+
+      <div class='form-group'>
+        <label for="review_complete" class='checkbox'>
+          <%= f.check_box :complete %> Review Complete
+        </label>
+      </div>
+
+      <%= f.submit "Submit", class: "btn btn-success" %>
+      <p class="help-block">Reviewed by: <%= @review.reviewer.name %></p>
+    <% end -%>  
+  </div>
+</div>

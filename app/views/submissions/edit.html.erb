@@ -1,1 +1,61 @@
-<%= @submission.inspect %>
+<%= render "/shared/error_messages", object: submission %>
+<%= form_for submission do |f| -%>
+
+  <% if submission.not_pending? %>
+    <div class='alert alert-success'>
+      <h4>Application Status: <%= link_to submission.status.capitalize, "#", class: "alert-link" %></h4>
+      Thank you for Applying to ADA. You will receive an email confirming your application and an additional email following up for potential candidacy. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <%= link_to "quis nostrud exercitation ullamco", "", class: "alert-link" %> laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </div>
+    
+  <% end %>
+  
+  <div class="form-group">
+    <%= f.label :resume_url %>
+    <%= f.url_field :resume_url, class: "form-control", placeholder: "Resume Gist URL", disabled: submission.not_pending? %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :video_interview_url %>
+    <%= f.url_field :video_interview_url, class: "form-control", placeholder: "YouTube URL", disabled: submission.not_pending? %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :website_url %>
+    <%= f.url_field :website_url, class: "form-control", placeholder: "Website URL", disabled: submission.not_pending? %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :linkdin_url %>
+    <%= f.url_field :linkdin_url, class: "form-control", placeholder: "LinkdIn URL", disabled: submission.not_pending? %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :twitter_handle %>
+    <%= f.text_field :twitter_handle, class: "form-control", placeholder: "Twitter Handle", disabled: submission.not_pending? %>
+  </div>
+  
+  <div class="checkbox">
+    <label>
+      <%= f.check_box :wa_resident, disabled: submission.not_pending? %> WA State Resident
+    </label>
+  </div>
+
+  <div class="checkbox">
+    <label>
+      <%= f.check_box :wa_student, disabled: submission.not_pending? %> Attended WA State School
+    </label>
+  </div>
+
+  <div class="checkbox">
+    <%= f.check_box :existing_financial_sponsorship, disabled: submission.not_pending? %> 
+    <%= f.label :existing_financial_sponsorship, "Existing Financial Sponsorship" %>
+    <div class='form-group' id='sponsorship_explaination'>
+      <%= f.text_area :sponsorship_explaination, rows: 3, class: "form-control", disabled: submission.not_pending? %>
+    </div>
+    
+  </div>
+  <% if submission.pending? %>
+    <%= f.submit "Save & Quit", class: "btn btn-default" %>
+    <%= f.submit "Submit Application", class: "btn btn-success" %>
+  <% end %>
+<% end -%>

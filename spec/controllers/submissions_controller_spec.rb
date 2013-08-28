@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe SubmissionsController do
-  let(:person) { Person.find_or_create_by_auth_hash(twitter_hash) }
+  let(:person) { Person.create(user_attrs) }
   before do
     session[:uid] = "123456"
-    Person.stub(:find_by).with(uid: "123456") { person }
+    Person.stub(:find).with("123456") { person }
   end
   
   describe "GET edit" do

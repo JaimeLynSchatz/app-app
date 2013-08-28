@@ -1,13 +1,26 @@
 require 'spec_helper'
 
 describe Person do
-  describe "create from twitter" do
-    let(:person) { Person.find_or_create_by_auth_hash(twitter_hash) }
+  let(:person) { Person.create(user_attrs) }
+  describe "password sign in" do
+    
+    it "should create a person" do
+      expect(person).to be_valid
+    end
+    
+    it "has password errors" do
+      person.password = "blah"
+      person.valid?
+      person.errors[:password_confirmation].should include "doesn't match Password"
+    end
+  end
+  describe "updates from GitHub" do
+    before { person; person.update_from_auth_hash(twitter_hash) }
     it "assigns a uid" do
       expect(person.uid).to eq "123456"
     end
     it "assigns a name" do
-      expect(person.name).to eq "John Q Public"
+      expect(person.name).to eq "Bookis"
     end
     it "assigns a handle" do
       expect(person.nickname).to eq "johnqpublic"
@@ -22,19 +35,14 @@ describe Person do
 
     it "has a uniq uid" do
       person
-      invalid = Person.create(uid: "123456")
+      invalid = Person.create(password: "gogo", password_confirmation: "gogo", email: "test@example.com", uid: "123456")
       expect(invalid.errors[:uid]).to include "has already been taken"
-    end
-    
-    it "returns an existing user" do
-      person
-      expect(Person.find_or_create_by_auth_hash(twitter_hash)).to eq person
     end
     
     it "doesn't change info on find" do
       person
-      found_person = Person.find_or_create_by_auth_hash(twitter_hash.merge({info: {nickname: "bookis"}}))
-      expect(found_person.nickname).to eq "johnqpublic"
+      person.update_from_auth_hash(twitter_hash.merge({info: {nickname: "bookis"}}))
+      expect(person.nickname).to eq "johnqpublic"
     end
   end
 end

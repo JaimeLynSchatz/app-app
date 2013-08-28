@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130806031157) do
+ActiveRecord::Schema.define(version: 20130826051854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,18 +19,46 @@ ActiveRecord::Schema.define(version: 20130806031157) do
   create_table "people", force: true do |t|
     t.string   "name"
     t.string   "email"
+    t.string   "password_digest"
+    t.string   "role",            default: "applicant"
     t.string   "nickname"
     t.string   "uid"
     t.string   "avatar_url"
     t.string   "phone"
+    t.string   "street"
+    t.string   "street_two"
+    t.string   "city"
+    t.string   "state"
+    t.string   "postal_code"
+    t.boolean  "locked",          default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "people", ["uid"], name: "index_people_on_uid", using: :btree
 
+  create_table "reviews", force: true do |t|
+    t.integer  "submission_id"
+    t.integer  "person_id"
+    t.integer  "score"
+    t.boolean  "complete",                default: false
+    t.text     "feedback"
+    t.string   "suggested_for_interview"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "submissions", force: true do |t|
-    t.string   "status"
+    t.string   "resume_url"
+    t.string   "video_interview_url"
+    t.string   "twitter_handle"
+    t.string   "website_url"
+    t.string   "linkdin_url"
+    t.string   "status",                         default: "pending"
+    t.text     "sponsorship_explaination"
+    t.boolean  "wa_resident",                    default: false
+    t.boolean  "wa_student",                     default: false
+    t.boolean  "existing_financial_sponsorship", default: false
     t.integer  "person_id"
     t.datetime "created_at"
     t.datetime "updated_at"

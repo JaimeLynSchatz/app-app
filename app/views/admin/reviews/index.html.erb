@@ -1,0 +1,31 @@
+<div class='row'>
+  <div class='col-lg-12'>
+    <legend>My Candidates</legend>
+    
+    <% if @reviews.empty? %>
+      <p class="lead text-center">You haven't selected any applicants to review, why don't you start with <%= link_to @applicant.name, admin_assign_review_path(@applicant.id) if @applicant %>?</p>
+    <% else %>
+      <table class='table table-striped table-bordered'>
+        <tr>
+          <th>Name</th>
+          <th>Reviewed By</th>
+          <th>Status</th>
+          <th>Reviews</th>
+          <th></th>
+        </tr>
+        <% @reviews.each do |review| %>
+          <tr class="<%= 'success' if review.complete %>">
+            <td><%= review.person.name %></td>
+            <td><%= review.reviewer.name %></td>
+            <td><%= review.complete ? "Complete" : "In Review" %></td>
+            <td><%= review.submission.reviews.count if review.submission %></td>
+            <td>
+              <%= link_to "Edit Review", admin_edit_review_path(review), class: "btn btn-primary" %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+    
+  </div>
+</div>

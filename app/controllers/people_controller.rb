@@ -12,7 +12,8 @@ class PeopleController < ApplicationController
   def update
     @user = current_user
     current_user.update_attributes(person_params)
-    redirect_to me_path
+    flash[:success] = "Updated Profile"
+    redirect_to root_path
   end
 
   def create

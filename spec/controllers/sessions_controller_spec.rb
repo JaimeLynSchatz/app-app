@@ -27,7 +27,7 @@ describe SessionsController do
 
       it "redirects to the users current step" do
         create
-        response.should redirect_to me_path
+        response.should redirect_to root_path
       end
     end
     

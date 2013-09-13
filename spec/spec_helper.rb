@@ -49,13 +49,12 @@ end
 
 def submission_attrs
   {
-    status:              "submitted",
-    resume_url:          "https://gist.github.com/bookis/6337929",
-    video_interview_url: "http://www.youtube.com/watch?v=zB3-FcxXauA",
-    website_url:         "http://bookissmuin.com",
-    linkdin_url:         "http://www.linkedin.com/profile/view?id=107082145&trk=nav_responsive_tab_profile",
-    twitter_handle:      "bookis",
-    wa_resident:         true
+    status:                 "submitted",
+    resume_url:             "https://gist.github.com/bookis/6337929",
+    reading_assessment_url: "https://gist.github.com/bookis/6337929",
+    logic_assessment_url:   "https://gist.github.com/bookis/6337929",
+    video_interview_url:    "http://www.youtube.com/watch?v=zB3-FcxXauA",
+    wa_resident:            true
   }
 end
 

@@ -3,7 +3,7 @@
     <h4>Oops...</h4>
     <ul class='list list-unstyled'>
       <% object.errors.each do |field, error| %>
-        <li><strong><%= field.capitalize %></strong> <%= error %></li>
+        <li><strong><%= field.to_s.humanize %></strong> <%= error %></li>
       <% end %>
     </ul>
   </div>

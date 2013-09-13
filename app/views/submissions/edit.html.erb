@@ -6,32 +6,109 @@
       <h4>Application Status: <%= link_to submission.status.capitalize, "#", class: "alert-link" %></h4>
       Thank you for Applying to ADA. You will receive an email confirming your application and an additional email following up for potential candidacy. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <%= link_to "quis nostrud exercitation ullamco", "", class: "alert-link" %> laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </div>
-    
   <% end %>
   
   <div class="form-group">
     <%= f.label :resume_url %>
     <%= f.url_field :resume_url, class: "form-control", placeholder: "Resume Gist URL", disabled: submission.not_pending? %>
+    <span class='help-inline'>
+      <small class='text-muted'>Your resume, written in <%= link_to "Markdown", "http://daringfireball.net/projects/markdown/", target: :blank %> and submitted as a <%= link_to "GitHub Gist", "http://gist.github.com", target: :blank %>.</small>
+      
+    </span>
   </div>
 
   <div class="form-group">
     <%= f.label :video_interview_url %>
     <%= f.url_field :video_interview_url, class: "form-control", placeholder: "YouTube URL", disabled: submission.not_pending? %>
+    <span class="help-inline">
+      <small class='text-muted'>
+        A <%= link_to "YouTube", "http://youtube.com", target: :blank %> video introducing yourself and answering <strong>5</strong> of the <strong>8</strong> below questions (your choice). The video should be no more than <strong>5 minutes</strong> long and reflect your personality and creativity. This video's privacy settings can either be 'Public' (everyone on YouTube can view) or 'Unlisted' (anyone with a link can view).
+        <ul>
+          <li>
+            Tell us about a time you had to learn something new. What was it? How did you approach learning it? In hindsight, what would you do differently?
+          </li>
+          <li>
+            Tell us about the last time you made a mistake. If you encountered the situation again, what would you do differently?
+          </li>
+          <li>
+            Why are you interested in programming?
+          </li>
+          <li>
+            How do you handle working with a person with a difficult personality? Give us an example and how you coped.
+          </li>
+          <li>
+            What are your professional goals for the next 5 years, the next 10 years?
+          </li>
+          <li>Why do you think you’re the best applicant for ADA?</li>
+          <li>
+            Taking a year off of work or school to learn programming at ADA can feel daunting. How will you stay motivated in the most difficult times?
+          </li>
+        </ul>
+      </small>
+    </span>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :reading_assessment_url %>
+    <%= f.url_field :reading_assessment_url, class: "form-control", placeholder: "Reading Assessment URL", disabled: submission.not_pending? %>
+    <span class='help-inline'>
+      <small class='text-muted'>
+        After reading the sections 1-1.3 of the sample from Ryan Bigg's <a href="http://samples.leanpub.com/multi-tenancy-rails-3-sample.pdf">Multitenancy with Rails</a>, respond to the following questions (< 200 words per answer) in <a href="http://daringfireball.net/projects/markdown/">Markdown</a> via <a href="https://gist.github.com/">GitHub Gist</a>.
+          <ol>
+            <li>In "Laying the foundations", Ryan covers a number of steps that he'll walk through. What are they?</li>
+            <li>What's a Rails Engine?</li>
+            <li>What command do we need to write to create a new rails plugin, with a dummy application and without an isolated namespace?</li>
+            <li>What's the first feature being built? What steps need to be taken ("tested") to verify it's working?</li>
+          </ol>
+      </small>
+    </span>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :logic_assessment_url %>
+    <%= f.url_field :logic_assessment_url, class: "form-control", placeholder: "Logic Assessment URL", disabled: submission.not_pending? %>
+    <span class='help-inline'>
+      <small class='text-muted'>
+        Read the <a href="https://gist.github.com/eliseworthy/72d800865c6a44d0aabd"> logic puzzle</a> and respond to the following questions (< 200 words per answer) in <a href="http://daringfireball.net/projects/markdown/">Markdown</a> via <a href="https://gist.github.com/">GitHub Gist</a>.</li>
+        <ol>
+          <li>Why is Susannah going to the Harvard Market QFC most of the time?</li>
+          <li>How did you arrive at that answer?</a>
+          <li>What other possible explanations are there?</li>  
+        </ol>
+      </small>
+    </span>
   </div>
 
   <div class="form-group">
     <%= f.label :website_url %>
     <%= f.url_field :website_url, class: "form-control", placeholder: "Website URL", disabled: submission.not_pending? %>
+    <span class='help-inline'>
+      <small class='text-muted'>Your personal website (not required)</small>
+    </span>
   </div>
   
   <div class="form-group">
     <%= f.label :linkdin_url %>
     <%= f.url_field :linkdin_url, class: "form-control", placeholder: "LinkdIn URL", disabled: submission.not_pending? %>
+    <span class='help-inline'>
+      <small class='text-muted'>Your LinkedIn Url (not required)</small>
+    </span>
+    
   </div>
   
   <div class="form-group">
     <%= f.label :twitter_handle %>
     <%= f.text_field :twitter_handle, class: "form-control", placeholder: "Twitter Handle", disabled: submission.not_pending? %>
+    <span class='help-inline'>
+      <small class='text-muted'>Your Twitter Username (not required)</small>
+    </span>
+  </div>
+  
+  <label>Resident Status</label>
+  <div class="checkbox">
+    <label>
+      <%= f.check_box :us_citizen, disabled: submission.not_pending? %> US Citizen
+    </label>
   </div>
   
   <div class="checkbox">
@@ -42,18 +119,37 @@
 
   <div class="checkbox">
     <label>
-      <%= f.check_box :wa_student, disabled: submission.not_pending? %> Attended WA State School
+      <%= f.check_box :wa_student, disabled: submission.not_pending? %> Attended WA State Community College or University
+    </label>
+  </div>
+  
+  <label>Financial Position <small class='text-muted'>(Choose One)</small></label>
+  <div class="radio">
+    <label>
+      <%= f.radio_button :financial_position, :need_stipend %>
+      I am applying as an independent student, my tuition will be waived, I require a monthly stipend of 1k to be in this program
+    </label>
+  </div>
+  <div class="radio">
+    <label>
+      <%= f.radio_button :financial_position, :no_stipend %>
+      I am applying as an independent student, my tuition will be waived, but I do not require a monthly stipend of 1k to be in this program
+    </label>
+  </div>
+  
+  <div class="radio">
+    <label>
+      <%= f.radio_button :financial_position, :sponsored, id: "submission_existing_financial_sponsorship" %>
+      My company will pay $20,000 for me to enter, and my company
+      <div class='form-group' id='sponsorship_explaination'>
+        <%= f.text_area :sponsorship_explaination, rows: 3, class: "form-control", disabled: submission.not_pending? %>
+        <span class='help-inline'>
+          <small class='text-muted'>Please explain</small>
+        </span>
+      </div>
     </label>
   </div>
 
-  <div class="checkbox">
-    <%= f.check_box :existing_financial_sponsorship, disabled: submission.not_pending? %> 
-    <%= f.label :existing_financial_sponsorship, "Existing Financial Sponsorship" %>
-    <div class='form-group' id='sponsorship_explaination'>
-      <%= f.text_area :sponsorship_explaination, rows: 3, class: "form-control", disabled: submission.not_pending? %>
-    </div>
-    
-  </div>
   <% if submission.pending? %>
     <%= f.submit "Save & Quit", class: "btn btn-default" %>
     <%= f.submit "Submit Application", class: "btn btn-success" %>

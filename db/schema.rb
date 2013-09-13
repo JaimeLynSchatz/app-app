@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130826051854) do
+ActiveRecord::Schema.define(version: 20130913161730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,14 +54,17 @@ ActiveRecord::Schema.define(version: 20130826051854) do
     t.string   "twitter_handle"
     t.string   "website_url"
     t.string   "linkdin_url"
-    t.string   "status",                         default: "pending"
+    t.string   "status",                   default: "pending"
     t.text     "sponsorship_explaination"
-    t.boolean  "wa_resident",                    default: false
-    t.boolean  "wa_student",                     default: false
-    t.boolean  "existing_financial_sponsorship", default: false
+    t.boolean  "wa_resident",              default: false
+    t.boolean  "wa_student",               default: false
     t.integer  "person_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "reading_assessment_url"
+    t.string   "logic_assessment_url"
+    t.boolean  "us_citizen",               default: false
+    t.string   "financial_position"
   end
 
 end

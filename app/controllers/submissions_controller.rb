@@ -21,13 +21,16 @@ class SubmissionsController < ApplicationController
     params.require(:submission).permit(
       :resume_url,
       :video_interview_url,
+      :reading_assessment_url,
+      :logic_assessment_url,
       :twitter_handle,
       :website_url,
       :linkdin_url,
       :sponsorship_explaination,
       :wa_resident,
       :wa_student,
-      :existing_financial_sponsorship
+      :us_citizen,
+      :financial_position
     )
   end
 end

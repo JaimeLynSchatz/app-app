@@ -16,18 +16,22 @@ describe Submission do
     submission.should be_valid
   end
   
-  it "isn't valid without url" do
-    submission.resume_url = nil
-    submission.should_not be_valid
-  end
-  it "isn't valid without video url" do
-    submission.video_interview_url = nil
-    submission.should_not be_valid
+  %w(resume_url video_interview_url reading_assessment_url logic_assessment_url).each do |field|
+    it "isn't valid without #{field}" do
+      submission.send("#{field}=", nil)
+      submission.should_not be_valid
+    end
   end
   
-  it "isn't valid without url" do
-    submission.existing_financial_sponsorship = true
+  it "isn't valid when sponsored without explaination" do
+    submission.financial_position = "sponsored"
     submission.should_not be_valid
+  end
+
+  it "is valid when sponsored with explaination" do
+    submission.financial_position = "sponsored"
+    submission.sponsorship_explaination = "lorem ipsum"
+    submission.should be_valid
   end
   
 end

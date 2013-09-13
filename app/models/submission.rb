@@ -3,8 +3,8 @@ class Submission < ActiveRecord::Base
   belongs_to :person
   
   with_options if: :not_pending? do |submission|
-    submission.validates :resume_url, :video_interview_url, presence: true
-    submission.validates :sponsorship_explaination, presence: { if: :existing_financial_sponsorship? }
+    submission.validates :resume_url, :video_interview_url, :reading_assessment_url, :logic_assessment_url, presence: true
+    submission.validates :sponsorship_explaination, presence: { if: :sponsored? }
   end
   
   scope :with_status, lambda { |status| where(status: status) }
@@ -15,5 +15,9 @@ class Submission < ActiveRecord::Base
   
   def pending?
     status == "pending"
+  end
+  
+  def sponsored?
+    self.financial_position == "sponsored"
   end
 end

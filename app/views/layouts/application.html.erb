@@ -55,7 +55,15 @@
     </div>
     <%= yield %>
   </div>
-
+  
+  <footer class='bs-footer'>
+    
+    <ul class='list-inline'>
+      <li><%= link_to "Ada Developers Academy 2013", root_path %></li>
+      <li><%= link_to "Apply", sign_up_path %></li>
+      <li><%= link_to "Sign In", sign_in_path %></li>
+    </ul>
+  </footer>
 
 </body>
 </html>

@@ -12,7 +12,9 @@
     <div class="header">
       <ul class="nav nav-pills pull-right">
         <% if current_user %>
-        
+          <% if submission.pending? %>
+            <li class=''><%= link_to "Pending Application", submission_path %></li>
+          <% end %>
           <% if current_user.can? :review %>
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">

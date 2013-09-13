@@ -4,7 +4,7 @@
   <% if submission.not_pending? %>
     <div class='alert alert-success'>
       <h4>Application Status: <%= link_to submission.status.capitalize, "#", class: "alert-link" %></h4>
-      Thank you for Applying to ADA. You will receive an email confirming your application and an additional email following up for potential candidacy. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <%= link_to "quis nostrud exercitation ullamco", "", class: "alert-link" %> laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      Thank you for Applying to ADA. You will receive an email confirming your application and an additional email following up for potential candidacy. 
     </div>
   <% end %>
   
@@ -12,7 +12,7 @@
     <%= f.label :resume_url %>
     <%= f.url_field :resume_url, class: "form-control", placeholder: "Resume Gist URL", disabled: submission.not_pending? %>
     <span class='help-inline'>
-      <small class='text-muted'>Your resume, written in <%= link_to "Markdown", "http://daringfireball.net/projects/markdown/", target: :blank %> and submitted as a <%= link_to "GitHub Gist", "http://gist.github.com", target: :blank %>.</small>
+      <small class='text-muted'>Your resume, written in <%= link_to "Markdown", "http://daringfireball.net/projects/markdown/", target: :blank %> and submitted as a <%= link_to "GitHub Gist", "http://gist.github.com", target: :blank %>. You'll need to create a <%= link_to "free GitHub account", "https://github.com/signup/free", target: :blank %> if you don't already have one.</small>
       
     </span>
   </div>
@@ -126,20 +126,20 @@
   <label>Financial Position <small class='text-muted'>(Choose One)</small></label>
   <div class="radio">
     <label>
-      <%= f.radio_button :financial_position, :need_stipend %>
+      <%= f.radio_button :financial_position, :need_stipend, disabled: submission.not_pending? %>
       I am applying as an independent student, my tuition will be waived, I require a monthly stipend of 1k to be in this program
     </label>
   </div>
   <div class="radio">
     <label>
-      <%= f.radio_button :financial_position, :no_stipend %>
+      <%= f.radio_button :financial_position, :no_stipend, disabled: submission.not_pending? %>
       I am applying as an independent student, my tuition will be waived, but I do not require a monthly stipend of 1k to be in this program
     </label>
   </div>
   
   <div class="radio">
     <label>
-      <%= f.radio_button :financial_position, :sponsored, id: "submission_existing_financial_sponsorship" %>
+      <%= f.radio_button :financial_position, :sponsored, id: "submission_existing_financial_sponsorship", disabled: submission.not_pending? %>
       My company will pay $20,000 for me to enter, and my company
       <div class='form-group' id='sponsorship_explaination'>
         <%= f.text_area :sponsorship_explaination, rows: 3, class: "form-control", disabled: submission.not_pending? %>
@@ -152,6 +152,6 @@
 
   <% if submission.pending? %>
     <%= f.submit "Save & Quit", class: "btn btn-default" %>
-    <%= f.submit "Submit Application", class: "btn btn-success" %>
+    <%= f.submit "Submit Application", class: "btn btn-success", confirm: "Are you sure? You cannot edit your application after submission." %>
   <% end %>
 <% end -%>

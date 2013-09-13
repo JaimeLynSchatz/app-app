@@ -4,12 +4,12 @@
       <% if submission.not_pending? %>
         <div class='alert alert-success'>
           <h4>Application Status: <%= link_to "Submitted", "#", class: "alert-link" %></h4>
-          Thank you for Applying to ADA. You will receive an email confirming your application and an additional email following up for potential candidacy. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <%= link_to "quis nostrud exercitation ullamco", "", class: "alert-link" %> laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          Thank you for Applying to ADA. You will receive an email confirming your application and an additional email following up for potential candidacy. 
         </div>
       <% else %>
         <div class='alert alert-danger'>
           <h4>Application Status: <%= link_to "Pending", submission_path, class: "alert-link" %></h4>
-          Your application is not complete yet. Visit your <%= link_to "submission", submission_path, class: "alert-link" %> to complete and submit your application. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          Your application is not complete yet. Visit your <%= link_to "submission", submission_path, class: "alert-link" %> to complete and submit your application. 
         </div>
       <% end %>
     <% end %>
@@ -20,7 +20,7 @@
    <h2>Ready to Apply?</h2>
    <p>You'll need to prepare a few things for the application. This includes:
      <ul>
-       <li>If you don't have one, you'll need to create <a href="https://github.com/signup/free">free GitHub account</a>. You'll be using <a href="https://gist.github.com/">GitHub Gists</a> to submit a few of the application sections.</li>
+       <li>If you don't have one, you'll need to create a <a href="https://github.com/signup/free">free GitHub account</a>. You'll be using <a href="https://gist.github.com/">GitHub Gists</a> to submit a few of the application sections.</li>
        <h5>About You</h5>
        <li>Your resume, written in <a href="http://daringfireball.net/projects/markdown/">Markdown</a> and submitted as a <a href="https://gist.github.com/">GitHub Gist</a>.</li>
        <li>A <a href="http://www.youtube.com/">YouTube</a> video introducing yourself and answering 5 of the 8 below questions (your choice). The video should be no more than 5 minutes long and reflect your personality and creativity. This video's privacy settings can either be 'Public' (everyone on YouTube can view) or 'Unlisted' (anyone with a link can view)</a>.

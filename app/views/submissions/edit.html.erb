@@ -2,10 +2,15 @@
 <%= form_for submission do |f| -%>
 
   <% if submission.not_pending? %>
-    <div class='alert alert-success'>
-      <h4>Application Status: <%= link_to submission.status.capitalize, "#", class: "alert-link" %></h4>
-      Thank you for Applying to ADA. You will receive an email confirming your application and an additional email following up for potential candidacy. 
-    </div>
+      <div class='alert alert-success'>
+        <h4>Application Status: <%= link_to submission.status.capitalize, "#", class: "alert-link" %></h4>
+        <p>
+          Thank you for Applying to ADA. You will receive an email confirming your application and an additional email following up for potential 
+          candidacy. 
+        </p><br>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://adadevelopersacademy.org" data-text="I want to see more women developers in Seattle (and everywhere)! That's why I applied to @adaacademy!" data-size="large" data-count="none" data-dnt="true">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>    
+      </div>
   <% end %>
   
   <div class="form-group">

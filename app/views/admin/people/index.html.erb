@@ -10,10 +10,12 @@
       </thead>
       <tbody>
         <% @people.each do |person| %>
-          <tr>
+          <tr class="<%= 'danger' if person.locked? %>">
             <td><%= person.name %></td>
             <td><%= person.role.capitalize %></td>
-            <td><%= link_to "Edit", edit_admin_person_path(person) %></td>
+            <td>
+				      <%= link_to "Edit", edit_admin_person_path(person) %>
+			      </td>
           </tr>
         <% end %>
       </tbody>

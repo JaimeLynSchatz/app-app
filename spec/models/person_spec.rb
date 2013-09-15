@@ -45,4 +45,5 @@ describe Person do
       expect(person.nickname).to eq "johnqpublic"
     end
   end
+  
 end

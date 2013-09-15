@@ -27,6 +27,7 @@ AppApp::Application.routes.draw do
     get   "/:id/edit",          to: "reviews#edit",    as: :edit_review
     patch "/:id",               to: "reviews#update",  as: :update_review
     get   "/",                  to: "reviews#index",   as: :reviews
+    patch "/people/:id/unlock", to: "people#unlock",   as: :unlock
     resources :people
     resources :submissions, only: :index
   end

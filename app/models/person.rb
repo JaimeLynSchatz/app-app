@@ -6,7 +6,7 @@ class Person < ActiveRecord::Base
   with_options if: :applicant? do |person|
     person.validates :street, :city, :state, :postal_code, :phone, presence: true
   end
-  
+
   has_one :submission
   has_many :reviews
   
@@ -54,5 +54,5 @@ class Person < ActiveRecord::Base
   def admin?
     role == "admin"
   end
-
+  
 end

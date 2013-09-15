@@ -17,4 +17,16 @@ class Admin::PeopleController < AdminController
       render :edit
     end
   end
+  
+  def unlock
+    @person = Person.find(params[:id])
+    if @person.update(locked: false)
+      PersonMailer.reviewer_accepted(@person.id).deliver
+      flash[:success] = "Approved #{@person.name}. They will be notified via email."
+      redirect_to admin_people_path
+    else
+      render :edit
+    end
+  end
+  
 end

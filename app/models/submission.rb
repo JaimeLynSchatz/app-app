@@ -1,4 +1,5 @@
 class Submission < ActiveRecord::Base
+  include AASM
   has_many :reviews
   belongs_to :person
   
@@ -8,6 +9,14 @@ class Submission < ActiveRecord::Base
   end
   
   scope :with_status, lambda { |status| where(status: status) }
+  
+  aasm column: :status do
+    state :pending, :initial => true
+    state :submitted, after_enter: :send_submission_accepted_email
+    event :submit do
+      transitions :from => :pending, :to => :submitted
+    end
+  end
   
   def not_pending?
     !pending?
@@ -20,4 +29,9 @@ class Submission < ActiveRecord::Base
   def sponsored?
     self.financial_position == "sponsored"
   end
+  
+  def send_submission_accepted_email
+    PersonMailer.thanks_for_applying(self.person_id).deliver
+  end
+  
 end

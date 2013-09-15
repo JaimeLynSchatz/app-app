@@ -6,8 +6,8 @@ class SubmissionsController < ApplicationController
   end
   
   def update
-    submission.status = "submitted" if params[:commit] == "Submit Application"
-    if submission.update_attributes(submission_params)
+    if submission.update(submission_params)
+      submission.submit! if params[:commit] == "Submit Application"
       redirect_to submission_path
     else
       submission.status = "pending"

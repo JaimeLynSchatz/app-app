@@ -11,6 +11,7 @@ gem 'turbolinks' # Read more: https://github.com/rails/turbolinks
 gem "omniauth-github"
 gem "bcrypt-ruby"
 gem 'mandrill-api'
+gem "aasm"
 
 group :production do
   gem 'rails_12factor'

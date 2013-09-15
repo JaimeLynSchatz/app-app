@@ -152,6 +152,8 @@
 
   <% if submission.pending? %>
     <%= f.submit "Save & Quit", class: "btn btn-default" %>
+
+	<!-- THIS BUTTON'S VALUE MUST BE "Submit Application" FOR THE SERVER TO RECOGNIZE IT'S BEING SUBMITTED  -->
     <%= f.submit "Submit Application", class: "btn btn-success", confirm: "Are you sure? You cannot edit your application after submission." %>
   <% end %>
 <% end -%>

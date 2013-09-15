@@ -50,6 +50,7 @@ end
 def submission_attrs
   {
     status:                 "submitted",
+    person_id:              1,
     resume_url:             "https://gist.github.com/bookis/6337929",
     reading_assessment_url: "https://gist.github.com/bookis/6337929",
     logic_assessment_url:   "https://gist.github.com/bookis/6337929",

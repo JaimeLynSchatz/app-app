@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe Submission do
+  
+  before(:each) do
+    PersonMailer.stub_chain(:thanks_for_applying, :deliver) { true }
+  end
+  
   describe "pending" do
     it "is pending" do
       Submission.new.status.should eq "pending"
@@ -32,6 +37,18 @@ describe Submission do
     submission.financial_position = "sponsored"
     submission.sponsorship_explaination = "lorem ipsum"
     submission.should be_valid
+  end
+  
+  describe "submit!" do
+    let(:submission) { Submission.create(submission_attrs.merge(status: "pending")) }
+    it "is pending" do
+      submission.status.should eq "pending"
+    end
+    
+    it "changes the status to submitted" do
+      submission.submit!
+      submission.submitted?.should be_true
+    end
   end
   
 end

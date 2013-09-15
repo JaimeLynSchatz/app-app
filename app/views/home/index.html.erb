@@ -4,7 +4,7 @@
       <% if submission.not_pending? %>
         <div class='alert alert-success'>
           <h4>Application Status: <%= link_to "Submitted", "#", class: "alert-link" %></h4>
-          Thank you for Applying to ADA. You will receive an email confirming your application and an additional email following up for potential candidacy. 
+          Thank you for Applying to Ada. You will receive an email confirming your application and an additional email following up for potential candidacy. 
         </div>
       <% else %>
         <div class='alert alert-danger'>
@@ -14,45 +14,69 @@
       <% end %>
     <% end %>
     <h2>Overview</h2>
-    <p>Welcome to the Ada Developers Academy application portal! Congratulations on taking the leap toward becoming a professional software developer. Writing code is a fun and ever-changing career, and you'll enjoy the benefits of being in one of the most sought-after fields (job flexibility, choice of employers, better pay - the list goes on).</p>
-   <p>Ada Developers Academy is comprised of two 24-week sections. First, you'll go through an intensive in-class section where you'll be learning fundamental skills of web development using Ruby, Rails, and JavaScript. Second, you'll be placed in an internship at a Seattle-area tech company. </p>
-  <p>This program is only for the committed: you'll be learning a lot of new material quickly and will have to continually demonstrate your knowledge through code reviews, quizzes, and product demonstrations. Once you graduate, you'll be well on your way to a full-fledged career in software development.</p>
-   <h2>Ready to Apply?</h2>
-   <p>You'll need to prepare a few things for the application. This includes:
-     <ul>
-       <li>If you don't have one, you'll need to create a <a href="https://github.com/signup/free">free GitHub account</a>. You'll be using <a href="https://gist.github.com/">GitHub Gists</a> to submit a few of the application sections.</li>
-       <h5>About You</h5>
-       <li>Your resume, written in <a href="http://daringfireball.net/projects/markdown/">Markdown</a> and submitted as a <a href="https://gist.github.com/">GitHub Gist</a>.</li>
-       <li>A <a href="http://www.youtube.com/">YouTube</a> video introducing yourself and answering 5 of the 8 below questions (your choice). The video should be no more than 5 minutes long and reflect your personality and creativity. This video's privacy settings can either be 'Public' (everyone on YouTube can view) or 'Unlisted' (anyone with a link can view)</a>.
-         <ul>
-           <li>Tell us about a time you had to learn something new. What was it? How did you approach learning it? In hindsight, what would you do differently?</li>
-           <li>Tell us about the last time you made a mistake. If you encountered the  situation again, what would you do differently?</li>
-           <li>Why are you interested in programming?</li>
-           <li>How do you handle working with a person with a difficult personality? Give us an example and how you coped.</li>
-           <li>What are your professional goals for the next 5 years, the next 10 years?</li>
-           <li>Why do you think you’re the best applicant for ADA? </li>
-           <li>Taking a year off of work or school to learn programming at ADA can feel daunting. How will you stay motivated in the most difficult times?</li>
+    <div class='bs-callout bs-callout-info'>
+      <p>Welcome to the Ada Developers Academy application portal! Congratulations on taking the leap toward becoming a professional software developer. Writing code is a fun and ever-changing career, and you'll enjoy the benefits of being in one of the most sought-after fields (job flexibility, choice of employers, better pay - the list goes on).</p>
+      <p>Ada Developers Academy is comprised of two 24-week sections. First, you'll go through an intensive in-class section where you'll be learning fundamental skills of web development using Ruby, Rails, and JavaScript. Second, you'll be placed in an internship at a Seattle-area tech company. </p>
+      <p>This program is only for the committed: you'll be learning a lot of new material quickly and will have to continually demonstrate your knowledge through code reviews, quizzes, and product demonstrations. Once you graduate, you'll be well on your way to a full-fledged career in software development.  As we do not expect you to have previous coding experience, we have designed the application process to help us determine that you have the technical aptitude to succeed, and to help you determine if you would enjoy software development as a career.  As you read through the application process, you may never have heard of some of the items.  Do not fear - the links below will take you to pages that will get you started on figuring out how to complete the tasks.</p>
+    </div>
+    <h2>Ready to Apply?</h2>
+    <h4>You'll need to prepare a few things for the application.</h4>
+    <div class="bs-callout bs-callout-danger">
+      <p>If you don't have one, you'll need to create a <a href="https://github.com/signup/free">free GitHub account</a>. You'll be using <a href="https://gist.github.com/">GitHub Gists</a> to submit a few of the application sections.</p>
+    </div>
+    <div class="bs-callout bs-callout-info">
+      <h4>Resume</h4>
+      <p>Your resume, written in <%= link_to "Markdown", "http://daringfireball.net/projects/markdown/" %> and submitted as a <%= link_to "GitHub Gist", "https://gist.github.com/" %>.</p>
+    </div>
+    <div class="bs-callout bs-callout-info">
+      <h4>Video</h4>
+      <p>A <a href="http://www.youtube.com/">YouTube</a> video introducing yourself and answering 5 of the 8 below questions (your choice). The video should be no more than 5 minutes long and reflect your personality and creativity. This video's privacy settings can either be 'Public' (everyone on YouTube can view) or 'Unlisted' (anyone with a link can view). If you don't have access to a camera and recording equipment, please <%= mail_to "contact@adadevelopersacademy.com", "email us", subject: "Video Recording Alternative" %>.
+        <ul>
+          <li>Tell us about a time you had to learn something new. What was it? How did you approach learning it? In hindsight, what would you do differently?</li>
+          <li>Tell us about the last time you made a mistake. If you encountered the  situation again, what would you do differently?</li>
+          <li>Why are you interested in programming?</li>
+          <li>How do you handle working with a person with a difficult personality? Give us an example.</li>
+          <li>What are your professional goals for the next 5 years, the next 10 years?</li>
+          <li>Why do you think you’re the best applicant for Ada? </li>
+          <li>Taking a year off of work or school to learn programming at Ada can feel daunting. How will you stay motivated in the most difficult times?</li>
         </ul>
-      </li>
-      <h5>Technical Reading Assessment</h5>
-      <li>After reading the sections 1-1.3 of the sample from Ryan Bigg's <a href="http://samples.leanpub.com/multi-tenancy-rails-3-sample.pdf">Multitenancy with Rails</a>, respond to the following questions (< 200 words per answer) in <a href="http://daringfireball.net/projects/markdown/">Markdown</a> via <a href="https://gist.github.com/">GitHub Gist</a>.
+      </p>
+    </div>
+    <div class="bs-callout bs-callout-info">
+      <h4>Technical Reading Assessment</h4>
+      <p>After reading the sections 1-1.3 of the sample from Ryan Bigg's <a href="http://samples.leanpub.com/multi-tenancy-rails-3-sample.pdf">Multitenancy with Rails</a>, respond to the following questions (< 200 words per answer) in <a href="http://daringfireball.net/projects/markdown/">Markdown</a> via <a href="https://gist.github.com/">GitHub Gist</a>. Note: the intent of these question is not to determine your level of programming knowledge, but to see how well you can interpret technical text, which is key to becoming a successful software developer.
         <ol>
           <li>In "Laying the foundations", Ryan covers a number of steps that he'll walk through. What are they?</li>
           <li>What's a Rails Engine?</li>
           <li>What command do we need to write to create a new rails plugin, with a dummy application and without an isolated namespace?</li>
           <li>What's the first feature being built? What steps need to be taken ("tested") to verify it's working?</li>
         </ol>   
-      </li>
-      <h5>Logic Assessment</h5>
-      <li>Read the <a href="https://gist.github.com/eliseworthy/72d800865c6a44d0aabd"> logic puzzle</a> and respond to the following questions (< 200 words per answer) in <a href="http://daringfireball.net/projects/markdown/">Markdown</a> via <a href="https://gist.github.com/">GitHub Gist</a>.</li>
-      <ol>
-        <li>Why is Susannah going to the Harvard Market QFC most of the time?</li>
-        <li>How did you arrive at that answer?</a>
-        <li>What other possible explanations are there?</li>  
-      </ol> 
-      <h5>Financial Position</h5> 
-      <li>Want to go to Ada Developers Academy, but don't want to quit your job? Your company can sponsor your attendance. Please complete the financial position questionnaire regarding your company's sponsorship. Otherwise, select whether you're an independent student (either requiring a stipend or not).
-    </ul>  
-    <%= link_to "Apply Now", sign_up_path, class: "btn btn-success col-lg-2" %>
+      </p>
+    </div>
+    <div class="bs-callout bs-callout-info">
+      <h4>Logic Assessment</h4>
+      <p>Read the <%= link_to "logic puzzle", logic_puzzle_path, target: :blank %> and respond to the following questions (< 200 words per answer) in <a href="http://daringfireball.net/projects/markdown/">Markdown</a> via <a href="https://gist.github.com/">GitHub Gist</a>.
+        <ol>
+          <li>Why is Susannah going to the Harvard Market QFC most of the time?</li>
+          <li>How did you arrive at that answer?</a>
+          <li>What other possible explanations are there?</li>  
+        </ol> 
+      </p>
+    </div>  
+    <div class="bs-callout bs-callout-info">
+      <h4>Other information</h4> 
+      <p>In addition to some questions about your residency status, we'll also ask you your financial position. Please note that Ada will be selecting candidates based on qualifications, not on need for support, to participate in the program. Please fill out this part of your application according to your needs.</p>
+      <p>
+        If you are employed and will not be quitting your job to attend Ada, your company must sponsor you ($20k over 12 months, payment options available). Please complete the financial position questionnaire regarding your company's sponsorship. Otherwise, select whether you're an independent student (either requiring a stipend or not).
+      </p>
+    </div> 
+    <h2>Application Process</h2>
+    <div class="bs-callout bs-callout-info">
+      <p>Once you've submitted your application, you'll receive a confirmation email. You will be notified within two weeks if you've been selected to interview.</p>
+      <p>Decisions will be made on a rolling basis, and you will be notified as soon as possible about final selections. Class starts October 28th.</p>
+    </div>
+    <div class="apply-button-wrap">
+      <%= link_to "Apply Now", sign_up_path, class: "btn btn-success col-lg-2" %>
+    </div>  
   </div>
 </div>

@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+<div id='wrap'>
   <div class='container'>
     <div class="header">
       <ul class="nav nav-pills pull-right">
@@ -55,11 +56,11 @@
         </div>
       <% end %>
     </div>
+    
     <%= yield %>
   </div>
-  
+</div>
   <footer class='bs-footer'>
-    
     <ul class='list-inline'>
       <li><%= link_to "Ada Developers Academy 2013", root_path %></li>
       <li><%= link_to "Apply", sign_up_path %></li>

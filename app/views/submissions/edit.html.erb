@@ -2,15 +2,13 @@
 <%= form_for submission do |f| -%>
 
   <% if submission.not_pending? %>
-      <div class='alert alert-success'>
-        <h4>Application Status: <%= link_to submission.status.capitalize, "#", class: "alert-link" %></h4>
-        <p>
-          Thank you for Applying to ADA. You will receive an email confirming your application and an additional email following up for potential 
-          candidacy. 
-        </p><br>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://adadevelopersacademy.org" data-text="I want to see more women developers in Seattle (and everywhere)! That's why I applied to @adaacademy!" data-size="large" data-count="none" data-dnt="true">Tweet</a>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>    
-      </div>
+    <div class='alert alert-success'>
+      <h4>Application Status: <%= link_to submission.status.capitalize, "#", class: "alert-link" %></h4>
+      Thank you for Applying to Ada. You will receive an email confirming your application and an additional email following up for potential candidacy. 
+      <br>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://adadevelopersacademy.org" data-text="I want to see more women developers in Seattle (and everywhere)! That's why I applied to @adaacademy!" data-size="large" data-count="none" data-dnt="true">Tweet</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </div>
   <% end %>
   
   <div class="form-group">
@@ -27,7 +25,7 @@
     <%= f.url_field :video_interview_url, class: "form-control", placeholder: "YouTube URL", disabled: submission.not_pending? %>
     <span class="help-inline">
       <small class='text-muted'>
-        A <%= link_to "YouTube", "http://youtube.com", target: :blank %> video introducing yourself and answering <strong>5</strong> of the <strong>8</strong> below questions (your choice). The video should be no more than <strong>5 minutes</strong> long and reflect your personality and creativity. This video's privacy settings can either be 'Public' (everyone on YouTube can view) or 'Unlisted' (anyone with a link can view).
+        A <%= link_to "YouTube", "http://youtube.com", target: :blank %> video introducing yourself and answering <strong>5</strong> of the <strong>8</strong> below questions (your choice). The video should be no more than <strong>5 minutes</strong> long and reflect your personality and creativity. This video's privacy settings can either be 'Public' (everyone on YouTube can view) or 'Unlisted' (anyone with a link can view). If you don't have access to a camera and recording equipment, please <%= mail_to "contact@adadevelopersacademy.com", "email us", subject: "Video Recording Alternative" %>.
         <ul>
           <li>
             Tell us about a time you had to learn something new. What was it? How did you approach learning it? In hindsight, what would you do differently?
@@ -39,14 +37,14 @@
             Why are you interested in programming?
           </li>
           <li>
-            How do you handle working with a person with a difficult personality? Give us an example and how you coped.
+            How do you handle working with a person with a difficult personality? Give us an example.
           </li>
           <li>
             What are your professional goals for the next 5 years, the next 10 years?
           </li>
-          <li>Why do you think you’re the best applicant for ADA?</li>
+          <li>Why do you think you’re the best applicant for Ada?</li>
           <li>
-            Taking a year off of work or school to learn programming at ADA can feel daunting. How will you stay motivated in the most difficult times?
+            Taking a year off of work or school to learn programming at Ada can feel daunting. How will you stay motivated in the most difficult times?
           </li>
         </ul>
       </small>
@@ -58,7 +56,7 @@
     <%= f.url_field :reading_assessment_url, class: "form-control", placeholder: "Reading Assessment URL", disabled: submission.not_pending? %>
     <span class='help-inline'>
       <small class='text-muted'>
-        After reading the sections 1-1.3 of the sample from Ryan Bigg's <a href="http://samples.leanpub.com/multi-tenancy-rails-3-sample.pdf">Multitenancy with Rails</a>, respond to the following questions (< 200 words per answer) in <a href="http://daringfireball.net/projects/markdown/">Markdown</a> via <a href="https://gist.github.com/">GitHub Gist</a>.
+        After reading the sections 1-1.3 of the sample from Ryan Bigg's <a href="http://samples.leanpub.com/multi-tenancy-rails-3-sample.pdf">Multitenancy with Rails</a>, respond to the following questions (< 200 words per answer) in <a href="http://daringfireball.net/projects/markdown/">Markdown</a> via <a href="https://gist.github.com/">GitHub Gist</a>. Note: the intent of these question is not to determine your level of programming knowledge, but to see how well you can interpret technical text, which is key to becoming a successful software developer.
           <ol>
             <li>In "Laying the foundations", Ryan covers a number of steps that he'll walk through. What are they?</li>
             <li>What's a Rails Engine?</li>
@@ -74,7 +72,7 @@
     <%= f.url_field :logic_assessment_url, class: "form-control", placeholder: "Logic Assessment URL", disabled: submission.not_pending? %>
     <span class='help-inline'>
       <small class='text-muted'>
-        Read the <a href="https://gist.github.com/eliseworthy/72d800865c6a44d0aabd"> logic puzzle</a> and respond to the following questions (< 200 words per answer) in <a href="http://daringfireball.net/projects/markdown/">Markdown</a> via <a href="https://gist.github.com/">GitHub Gist</a>.</li>
+        Read the <%= link_to "logic puzzle", logic_puzzle_path, target: :blank %> and respond to the following questions (< 200 words per answer) in <a href="http://daringfireball.net/projects/markdown/">Markdown</a> via <a href="https://gist.github.com/">GitHub Gist</a>.</li>
         <ol>
           <li>Why is Susannah going to the Harvard Market QFC most of the time?</li>
           <li>How did you arrive at that answer?</a>
@@ -124,11 +122,12 @@
 
   <div class="checkbox">
     <label>
-      <%= f.check_box :wa_student, disabled: submission.not_pending? %> Attended WA State Community College or University
+      <%= f.check_box :wa_student, disabled: submission.not_pending? %> Attended WA State Community College or University (any level or completion status)
     </label>
   </div>
   
   <label>Financial Position <small class='text-muted'>(Choose One)</small></label>
+  <p><small class='text-muted'>Please note that Ada will be selecting candidates based on qualifications, not on need for support, to participate in the program. Please fill out this part of your application according to your needs.</small></p>
   <div class="radio">
     <label>
       <%= f.radio_button :financial_position, :need_stipend, disabled: submission.not_pending? %>
@@ -145,7 +144,7 @@
   <div class="radio">
     <label>
       <%= f.radio_button :financial_position, :sponsored, id: "submission_existing_financial_sponsorship", disabled: submission.not_pending? %>
-      My company will pay $20,000 for me to enter, and my company
+      I will be employed during Ada Developers Academy. My company has agreed to pay a total of $20,000 (over 12 months - payment options available) to cover the cost of my tuition.
       <div class='form-group' id='sponsorship_explaination'>
         <%= f.text_area :sponsorship_explaination, rows: 3, class: "form-control", disabled: submission.not_pending? %>
         <span class='help-inline'>

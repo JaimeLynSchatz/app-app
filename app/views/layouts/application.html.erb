@@ -12,7 +12,7 @@
     <div class="header">
       <ul class="nav nav-pills pull-right">
         <% if current_user %>
-          <% if submission.pending? %>
+          <% if current_user.applicant? && submission.pending? %>
             <li class=''><%= link_to "Pending Application", submission_path %></li>
           <% end %>
           <% if current_user.can? :review %>
@@ -39,7 +39,7 @@
           <li><%= link_to "Sign In", "/sign-in" %></li>
         <% end %>
       </ul>
-      <h3 class="text-muted">ADA Application</h3>
+      <h3 class="text-muted"><%= link_to "ADA Application", root_path %></h3>
     </div>
     <div class='row'>
       <% if flash[:notice] %>

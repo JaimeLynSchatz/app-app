@@ -1,5 +1,6 @@
 class SubmissionsController < ApplicationController
   before_filter :auth_user
+  before_filter :redirect_admins
 
   def edit
     
@@ -33,4 +34,9 @@ class SubmissionsController < ApplicationController
       :financial_position
     )
   end
+  
+  def redirect_admins
+    redirect_to admin_reviews_path if current_user && current_user.can?(:review)
+  end
+  
 end

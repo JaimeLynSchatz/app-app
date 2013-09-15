@@ -31,7 +31,6 @@ class PeopleController < ApplicationController
     @person.role   = :reviewer
     @person.locked = true
     if @person.save
-      #SEND EMAIL
       flash[:success] = "Thank for signing up, you will receive an approval email soon."
       redirect_to root_path
     else

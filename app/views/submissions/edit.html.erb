@@ -22,7 +22,7 @@
     <%= f.url_field :video_interview_url, class: "form-control", placeholder: "YouTube URL", disabled: submission.not_pending? %>
     <span class="help-inline">
       <small class='text-muted'>
-        A <%= link_to "YouTube", "http://youtube.com", target: :blank %> video introducing yourself and answering <strong>5</strong> of the <strong>8</strong> below questions (your choice). The video should be no more than <strong>5 minutes</strong> long and reflect your personality and creativity. This video's privacy settings can either be 'Public' (everyone on YouTube can view) or 'Unlisted' (anyone with a link can view).
+        A <%= link_to "YouTube", "http://youtube.com", target: :blank %> video introducing yourself and answering <strong>5</strong> of the <strong>8</strong> below questions (your choice). The video should be no more than <strong>5 minutes</strong> long and reflect your personality and creativity. This video's privacy settings can either be 'Public' (everyone on YouTube can view) or 'Unlisted' (anyone with a link can view). If you don't have access to a camera and recording equipment, please <%= mail_to "contact@adadevelopersacademy.com", "email us", subject: "Video Recording Alternative" %>.
         <ul>
           <li>
             Tell us about a time you had to learn something new. What was it? How did you approach learning it? In hindsight, what would you do differently?

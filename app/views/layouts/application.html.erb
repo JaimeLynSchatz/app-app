@@ -8,64 +8,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <div id='wrap'>
-    <div class='container'>
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <% if current_user %>
-            <% if current_user.applicant? && submission.pending? %>
-              <li class=''><%= link_to "Pending Application", submission_path %></li>
-            <% end %>
-            <% if current_user.can? :review %>
-              <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                  Admin <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <% if current_user.can? :admin %>
-                    <li><%= link_to "Admin", admin_people_path %></li>
-                  <% end %>
-                  <li><%= link_to "My Reviews", admin_reviews_path %></li>
-                  <li><%= link_to "All Submissions", admin_submissions_path %></li>
-                </ul>
-              </li>          
-            <% else %>
-              <li class=""><a href="/">Home</a></li>
-            <% end %>
-          
-            <li><%= link_to "Profile", profile_path %></li>
-            <li><%= link_to "Sign Out", sign_out_path %></li>
-          <% else %>
-            <li><%= link_to "Apply Now", "/apply" %></li>
-            <li><%= link_to "Sign In", "/sign-in" %></li>
+<div id='wrap'>
+  <div class='container'>
+    
+    
+    
+    <div class="header">
+      <ul class="nav nav-pills pull-right">
+        <% if current_user %>
+          <% if current_user.applicant? && submission.pending? %>
+            <li class=''><%= link_to "Pending Application", submission_path %></li>
           <% end %>
-        </ul>
-        <h3 class="text-muted"><%= link_to "ADA Application", root_path %></h3>
-      </div>
-      <div class='row'>
-        <% if flash[:notice] %>
-          <div class='alert alert-danger alert-dismissable'>
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <%= flash[:notice] %>
-          </div>
+          <% if current_user.can? :review %>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Admin <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <% if current_user.can? :admin %>
+                  <li><%= link_to "Admin", admin_people_path %></li>
+                <% end %>
+                <li><%= link_to "My Reviews", admin_reviews_path %></li>
+                <li><%= link_to "All Submissions", admin_submissions_path %></li>
+              </ul>
+            </li>          
+          <% else %>
+            <li class=""><a href="/">Home</a></li>
+          <% end %>
+          
+          <li><%= link_to "Profile", profile_path %></li>
+          <li><%= link_to "Sign Out", sign_out_path %></li>
+        <% else %>
+          <li><%= link_to "Apply Now", "/apply" %></li>
+          <li><%= link_to "Sign In", "/sign-in" %></li>
         <% end %>
-        <% if flash[:success] %>
-          <div class='alert alert-success alert-dismissable'>
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <%= flash[:success] %>
-          </div>
-        <% end %>
-      </div>
-      <%= yield %>
+      </ul>
+      <h3 class="text-muted"><a href="/">Ada Application</a></h3>
     </div>
+    
+    <div class='row'>
+      <% if flash[:notice] %>
+        <div class='alert alert-danger alert-dismissable'>
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      <% if flash[:success] %>
+        <div class='alert alert-success alert-dismissable'>
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <%= flash[:success] %>
+        </div>
+      <% end %>
+    </div>
+    <%= yield %>
   </div>
-  <footer class='bs-footer'>
-    <ul class='list-inline'>
-      <li><%= link_to "Ada Developers Academy 2013", root_path %></li>
-      <li><%= link_to "Apply", sign_up_path %></li>
-      <li><%= link_to "Sign In", sign_in_path %></li>
-    </ul>
-  </footer>
+</div>
+<footer class='bs-footer'>
+  <ul class='list-inline'>
+    <li><%= link_to "Ada Developers Academy 2013", root_path %></li>
+    <li><%= link_to "Apply", sign_up_path %></li>
+    <li><%= link_to "Sign In", sign_in_path %></li>
+  </ul>
+</footer>
 
 </body>
 </html>

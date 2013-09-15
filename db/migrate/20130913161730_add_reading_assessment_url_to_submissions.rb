@@ -4,6 +4,6 @@ class AddReadingAssessmentUrlToSubmissions < ActiveRecord::Migration
     add_column :submissions, :logic_assessment_url, :string
     add_column :submissions, :us_citizen, :boolean, default: false
     add_column :submissions, :financial_position, :string
-    remove_column :submissions, :existing_financial_sponsorship
+    remove_column :submissions, :existing_financial_sponsorship, :text
   end
 end

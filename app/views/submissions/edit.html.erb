@@ -119,11 +119,12 @@
 
   <div class="checkbox">
     <label>
-      <%= f.check_box :wa_student, disabled: submission.not_pending? %> Attended WA State Community College or University
+      <%= f.check_box :wa_student, disabled: submission.not_pending? %> Attended WA State Community College or University (any level or completion status)
     </label>
   </div>
   
   <label>Financial Position <small class='text-muted'>(Choose One)</small></label>
+  <p><small class='text-muted'>Please note that Ada will be selecting candidates based on qualifications, not on need for support, to participate in the program. Please fill out this part of your application according to your needs.</small></p>
   <div class="radio">
     <label>
       <%= f.radio_button :financial_position, :need_stipend, disabled: submission.not_pending? %>
@@ -140,7 +141,7 @@
   <div class="radio">
     <label>
       <%= f.radio_button :financial_position, :sponsored, id: "submission_existing_financial_sponsorship", disabled: submission.not_pending? %>
-      My company will pay $20,000 for me to enter, and my company
+      I will be employed during Ada Developers Academy. My company has agreed to pay a total of $20,000 (over 12 months - payment options available) to cover the cost of my tuition.
       <div class='form-group' id='sponsorship_explaination'>
         <%= f.text_area :sponsorship_explaination, rows: 3, class: "form-control", disabled: submission.not_pending? %>
         <span class='help-inline'>

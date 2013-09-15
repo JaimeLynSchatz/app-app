@@ -1,6 +1,9 @@
 AppApp::Application.routes.draw do
   root 'home#index'
   
+  # MISC
+  get '/logic-puzzle', to: 'home#logic_puzzle', as: :logic_puzzle
+  
   # SESSIONS
   post '/sign-in',                 to: 'sessions#create',  as: :create_sign_in
   get  '/sign-in',                 to: 'sessions#new',     as: :sign_in
